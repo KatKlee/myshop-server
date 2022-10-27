@@ -7,7 +7,7 @@ export const getAllProducts = async (req, res) => {
         const products = await allProducts()
         res.status(200).json(products)
     } catch (error) {
-        res.status(500).send('GetAllProducts hat nicht geklappt')
+        res.status(500).send('GetAllProducts failed')
         console.log(error)
     }
 }

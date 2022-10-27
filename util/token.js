@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 // function to create a token
 export const createToken = (claims) => {
     // create token with sign() method from jsonwebtoken, hashed with secret
-    const token = jwt.sign(claims, process.env.JWT_SECRET, { expiresIn: '1min' })
+    const token = jwt.sign(claims, process.env.JWT_SECRET, { expiresIn: '1h' })
     // response is the token
     return token
 }

@@ -1,5 +1,4 @@
-
-// try and catch nur ganz oben in der Funktionenkette
+import { getDB } from "../util/db.js"
 
 
 export const allProducts = async () => {
@@ -9,14 +8,18 @@ export const allProducts = async () => {
     return prodResult
 }
 
-
+// woher ist der übergebene Parameter?
 function Product(product) {
     this._id = product._id
     this.title = product.title
+    this.brand = product.brand
+    this.info = product.info
     this.articlenr = product.articlenr
     this.price = product.price
     this.instock = product.instock
+    this.img = product.img
 }
+
 /* prodResult.forEach(item => {
     products.push(new Product(item))
 }) */

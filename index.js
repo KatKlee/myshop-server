@@ -24,8 +24,13 @@ app.get('/', (req, res) => {
     res.status(200).send('Alles OKAY')
 })
 
-app.get('/api/dashboard', checkTokenMiddleware/* ,getAllUsers ,getAllProducts, getAllOrders */)
-app.post('/api/dashboard', checkTokenMiddleware/* , addNewProducts */)
+app.get('/api/users', checkTokenMiddleware/* ,getAllUsers  */)
+app.post('/api/customers', checkTokenMiddleware/* , addNewCustomers */)
+
+app.get('/api/products', checkTokenMiddleware /* ,getAllProducts */)
+app.post('/api/products', checkTokenMiddleware/* , addNewProducts */)
+
+app.get('/api/orders', checkTokenMiddleware /* , getAllOrders */)
 app.post('/api/login', encrypt, login) // check login and encrypt password
 app.post('/', createToken)
 app.get('/api/verify', verifyBearer)
