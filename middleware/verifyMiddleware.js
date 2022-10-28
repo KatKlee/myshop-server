@@ -2,7 +2,8 @@ import { verifyToken } from "../util/token.js"
 
 export const checkTokenMiddleware = (req, res, next) => {
     try {
-        const token = req.headers.authentication.spilt(" ")[1]
+        console.log(req.headers)
+        const token = req.headers.authentication.split(" ")[1]
         const result = verifyToken(token)
         console.log(result)
         next()

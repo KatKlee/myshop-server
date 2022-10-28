@@ -1,25 +1,21 @@
+import { ObjectId } from "mongodb"
 import { getDB } from "../util/db.js"
 
+export const saveProduct = async (product) => {
+    const db = await getDB()
+    const saveResult = await db.collection('products').insertOne(product)
+    return saveResult
+}
 
 export const allProducts = async () => {
-    let products = []
     const db = await getDB()
     const prodResult = await db.collection('products').find().toArray()
+    console.log(prodResult)
     return prodResult
 }
 
-// woher ist der übergebene Parameter?
-function Product(product) {
-    this._id = product._id
-    this.title = product.title
-    this.brand = product.brand
-    this.info = product.info
-    this.articlenr = product.articlenr
-    this.price = product.price
-    this.instock = product.instock
-    this.img = product.img
+export const loadProduct = async (id) => {
+    const db = await getDB()
+    const loadResult = await db.collection('products').findOne({ _id: new ObjectId(id) })
+    return loadResult
 }
-
-/* prodResult.forEach(item => {
-    products.push(new Product(item))
-}) */
