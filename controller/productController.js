@@ -2,11 +2,16 @@
 import { allProducts, loadProduct, saveProduct } from "../services/productService.js"
 
 export const addNewProduct = async (req, res) => {
-    const product = req.body // Validierung erforderlich
-    product.price = Number(product.price)
-    const result = await saveProduct(product)
-    console.log(result)
-    res.status(200).json({ state: true })
+    try {
+        const product = req.body // Validierung erforderlich
+        product.price = Number(product.price)
+        const result = await saveProduct(product)
+        console.log(result)
+        res.status(200).json({ state: true })
+    } catch (error) {
+        res.status(500).send('addNewProduct failed')
+        console.log(error)
+    }
 }
 
 export const getAllProducts = async (_, res) => {
